@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            font-family: cursive;
+            font-size: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background-color: lavenderblush;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        nav a {
+            text-decoration: solid;
+            color: #F3E0BE;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff9900;
+            transition: 0.3s;
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            background-image: url('https://hips.hearstapps.com/hmg-prod/images/ccs-architecture-portfolio-interiors-commercial-1501113434-2047565-1541108452.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 100px 0;
+            font-family: cursive;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: lavender;
+            text-shadow: 2px 2px 4px #333;
+            padding: 100px 0;
+            font-family: cursive;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: lavender;
+            text-shadow: 2px 2px 4px #000;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .hero .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: lavender;
+            color: #333;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+
+        .hero .btn:hover {
+            background-color: #ff6600;
+        }
+
+        /* Menu Section Styles */
+        #menu {
+            background-color: steelblue;
+            padding: 50px 0;
+            text-align: center;
+            color: whitesmoke;
+            font-family: cursive;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .menu-item {
+            display: inline-block;
+            width: 30%;
+            padding: 20px;
+            margin: 1%;
+            background-color: rgba(245, 245, 245, 0.9);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .menu-item img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .menu-item h3 {
+            font-size: 1.8rem;
+            margin-top: 10px;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+            font-family: cursive;
+        }
+
+        .menu-item p {
+            font-size: 1.4rem;
+            color: #555;
+        }
+
+        .menu-item .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+            font-family: cursive;
+        }
+
+        /* Reservation Section Styles */
+        #reservation {
+    background-color: #f5f5f5;
+    padding: 50px 0;
+    text-align: center;
+    font-family: cursive;
+    color: #333;
+}
+
+.reservation-container {
+    background-color: #6697e2; /* Change to your preferred attractive background color, e.g., light blue */
+    color: #333; /* Change text color to match */
+    padding: 50px;
+    text-align: center;
+    border-radius: 10px;
+    animation: fadeIn 1s ease-in-out,  bounceAndRotate 2s infinite;
+}
+
+@keyframes bounceAndRotate {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) rotate(0);
+    }
+    40% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+    60% {
+        transform: translateY(-10px) rotate(-10deg);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#reservation-form input,
+#reservation-form button {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    font-size: 18px;
+    border: 1px solid #fff;
+    background: rgba(255, 255, 255, 0.2);
+    font-family: cursive;
+    color: #333;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#reservation-form input:focus,
+#reservation-form button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.message {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #00c853; /* Change the color to green for success message */
+}
+
+        .message {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        /* About Section Styles */
+        #about {
+            background-color: lavender;
+            padding: 50px;
+            text-align: center;
+            font-family: cursive;
+        }
+
+        #about h2 {
+            font-size: 2.5rem;
+            color: blue;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px lightslategray;
+        }
+
+        .about-paragraph {
+            font-size: 25px;
+            margin-top: 20px;
+            color: #444;
+            line-height: 1.6;
+        }
+        /* Contact Section Styles */
+        #contact {
+            background-color: #333;
+            padding: 50px 0;
+            text-align: right;
+            color: white;
+            padding-right: 25px;
+        }
+
+        #contact h2 {
+            font-size: 2rem;
+        }
+
+        #contact p {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        .contact-link {
+            color: white;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            font-family: cursive;
+            font-size: 20px;
+        }
+
+        @keyframes backgroundSlide {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes menuItemSlide {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* CSS */
+@keyframes slideIn {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slide-in {
+    animation: slideIn 1s ease-in-out;
+}
+            .navigation-arrow {
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 24px;
+            }
+            
+            .navigation-arrow a {
+                color: #fff;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+            
+            .navigation-arrow a:hover {
+                color: #ff9900;
+            }
+        </style>
+
+            
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-/YQeF5LkZ6GqMbGRz7r5S0OhcdMum5RgoENc65u5nGEXGO4GmaJ9H2ZMjjvImQVp98ugt4huXR1qwFGmG3pWxlA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#reservation">Reservations</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="hero">
+            <h1 class="heading">Jannath Restaurant<br>Welcomes you</h1>
+            <p class="subheading">Discover a world of exquisite flavors.</p>
+            <a href="#menu" class="btn">View Menu</a>
+            <div class="navigation-arrow">
+                <a href="#menu"><i class="fas fa-arrow-down"></i></a>
+            </div>
+        </div>
+    </section>
+   
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <h2 class="section-heading">Our Menu</h2>
+        <div class="menu-item">
+            <img src="https://static.wixstatic.com/media/ee80e8_d77162f59a25452ca6547e4f27b29b57~mv2.jpg/v1/fill/w_1960,h_2536,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/Buffet%20Menu%202022%20%2442pp.jpg" alt="Menu Item">
+            <h3 class="menu-item-title">Buffet</h3>
+            <p class="menu-item-description">A variety of dishes presented in a line, from which diners in a restaurant serve themselves, usually at a fixed price regardless of how much one eats: The lavish all-you-can-eat buffet delivered a feast of salads, curries, pasta dishes, and sumptuous desserts starts from</p>
+            <span class="price">₹599</span>
+            <div class="navigation-arrow">
+                <a href="#reservation"><i class="fas fa-arrow-down"></i></a>
+            </div>
+        </div>
+        
+        <!-- Add more menu items here -->
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation">
+        <div class="reservation-container slide-in">
+            <h2 class="section-heading">Make a Reservation</h2>
+            <p class="reservation-subheading">Book your table and experience a delightful dining experience.</p>
+            <form id="reservation-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <label for="date">Date:</label>
+                <input type="date" id="date" required>
+                <label for="time">Time:</label>
+                <input type="time" id="time" required>
+                <button type="button" id="submit-button" class="btn">Submit</button>
+            </form>
+            <p id="reservation-message" class="message"></p>
+            <div class="navigation-arrow">
+                <a href="#about"><i class="fas fa-arrow-down"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-heading">About Us</h2>
+        <p class="about-paragraph">Jannath Restaurant is a place of culinary excellence...</p>
+        <p class="about-paragraph">The concept of Jannath Restaurant was drawn from Ahlan Foodpreneurs, the idea was to create an authentic North & South Non-Veg restaurant specialized in Chettinad, Tandoor, Andhra, and lip-smacking barbecues with great taste, grand ambience, and unmatched services to provide you a memorable dining experience. Tamil Muslim wedding Biriyani and South Indian seafood dishes are the unique attractions of the menu. The concept of 'Jannath Restaurant' was established in 2011 with a strong focus and commitment towards quality, exceptional service, and warm hospitality, employs a team of highly skilled & experienced chefs and supported by a strong management team at different levels to ensure it meets the standards. With due emphasis laid on quality, service & hygiene, Jannath Restaurant is committed to Food Safety & Standards and strictly implements FSSAI: 2006 across the chain of restaurants and is periodically audited..</p>
+        <div class="navigation-arrow">
+            <a href="#contact"><i class="fas fa-arrow-down"></i></a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-heading">Contact Us</h2>
+        <p class="contact-paragraph">If you have any questions or would like to make a reservation, feel free to reach out to us:</p>
+        <p class="contact-paragraph">Phone: +91 9952917451 (WhatsApp available)</p>
+        <p class="contact-paragraph">Email: <a href="mailto:asifalsaud000@gmail.com" class="contact-link">asifalsaud000@gmail.com</a></p>
+        <p class="contact-paragraph">Location: Mangadu, Chennai</p>
+    </section>
+
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#reservation">Reservations</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <br>        <br>
+        <p class="footer-text">&copy; 2023 Jannath Restaurant. All rights reserved.</p>
+    </footer>
+    <script>
+        // Slideshow images and index
+        const slideshowImages = [
+          'https://hips.hearstapps.com/hmg-prod/images/ccs-architecture-portfolio-interiors-commercial-1501113434-2047565-1541108452.jpg', // Replace with the URL of your second image
+          'https://www.sonomacounty.com/sites/default/files/inline-images/dining_Single_Thread_Healdsburg_by_Garrett_Rowland_Sonoma_County_015_900x675.jpg',
+          'https://images.jdmagicbox.com/comp/def_content/buffet-restaurants/buffet-restaurants4-buffet-restaurants-4-qr837.jpg?clr=',
+        ];
+        
+        let currentImageIndex = 0;
+        
+        // Function to change the background image
+        function changeBackgroundImage() {
+          const hero = document.querySelector('.hero');
+          hero.style.backgroundImage = `url('${slideshowImages[currentImageIndex]}')`;
+          currentImageIndex = (currentImageIndex + 1) % slideshowImages.length;
+        }
+        
+        // Call the changeBackgroundImage function every 5 seconds (5000 milliseconds)
+        setInterval(changeBackgroundImage, 3000);
+        
+        // Define your menu item data here (replace with your actual data)
+        const menuItemsContent = [
+            {
+                imageSrc: 'https://static.wixstatic.com/media/ee80e8_d77162f59a25452ca6547e4f27b29b57~mv2.jpg/v1/fill/w_1960,h_2536,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/Buffet%20Menu%202022%20%2442pp.jpg',
+                title: 'Beverages',
+                description: 'A variety of dishes presented in a line, from which diners in a restaurant serve themselves, usually at a fixed price regardless of how much one eats: The lavish all-you-can-eat buffet delivered a feast of chicken, burger, pizza, and sumptuous drinks starts from',
+                price: '₹399',
+            },
+            {
+                imageSrc: 'https://marketplace.canva.com/EAFI0Jjs9ro/1/0/1131w/canva-cream-brown-fancy-restaurant-menu-4H0qPV6CW4g.jpg',
+                title: 'Beverages',
+                description: 'Description for Menu Item 2 goes here.',
+                price: '₹799',
+            },
+            {
+                imageSrc: 'https://d4t7t8y8xqo0t.cloudfront.net/resized/1080X/restaurant%2F673423%2Fmenu%2Fmenu01663301692557.jpg',
+                title: 'Menu Item 3 Title',
+                description: 'Description for Menu Item 3 goes here.',
+                price: '₹599',
+            },
+            {
+                imageSrc: 'https://i.pinimg.com/originals/d6/ad/bd/d6adbd80c2a79a6c99b7a483e17d3022.jpg',
+                title: 'Menu Item 3 Title',
+                description: 'Description for Menu Item 3 goes here.',
+                price: '₹499',
+            },
+            // Add more menu items as needed
+        ];
+        
+        // Function to change the content of the menu items
+        function changeMenuItem() {
+            const menuItems = document.querySelectorAll('.menu-item');
+        
+            // Loop through menu items and update each one with your actual data
+            menuItems.forEach((menuItem, index) => {
+                const menuData = menuItemsContent[index];
+        
+                const image = menuItem.querySelector('img');
+                const title = menuItem.querySelector('.menu-item-title');
+                const description = menuItem.querySelector('.menu-item-description');
+                const price = menuItem.querySelector('.price');
+        
+                image.src = menuData.imageSrc;
+                title.textContent = menuData.title;
+                description.textContent = menuData.description;
+                price.textContent = menuData.price;
+            });
+        
+            // Move the first menu item to the end for the slideshow effect
+            const firstMenuItem = menuItems[0];
+            firstMenuItem.parentNode.appendChild(firstMenuItem);
+        }
+        
+     // Call the changeMenuItem function every 3 seconds (3000 milliseconds)
+setInterval(changeMenuItem, 1000);
+        
+        // Function to validate the email format
+        function isEmailValid(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        // Function to handle the form submission
+        function handleFormSubmission() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const date = document.getElementById("date").value;
+            const time = document.getElementById("time").value;
+        
+            // Basic client-side validation
+            if (!name || !email || !date || !time) {
+                alert("Please fill in all fields.");
+                return;
+            }
+        
+            if (!isEmailValid(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+        
+            // Form data is valid, you can send it to the server or display a confirmation message
+            alert(`Reservation request submitted for ${name} on ${date} at ${time}.`);
+            // You can add code here to send the data to the server if needed
+        }
+        
+        // Reservation Form Handling
+        const reservationForm = document.querySelector('#reservation-form');
+        const reservationMessage = document.querySelector('#reservation-message');
+        
+        reservationForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    // You can add your server-side logic here to process the reservation request
+    // Example: Send a request to a server to handle the reservation
+
+    // Display a confirmation message
+    reservationMessage.textContent = 'Reservation request submitted. We will contact you soon.';
+    reservationMessage.style.color = '#00c853'; // Green color for success message
+});
+
+        
+        // Attach form submission handler to the button
+        document.getElementById("submit-button").addEventListener("click", handleFormSubmission);
+        </script>
+        </body>
+        </html>
+      
